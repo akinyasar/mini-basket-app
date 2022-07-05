@@ -1,0 +1,43 @@
+:root {
+  --color-background: var(--vt-c-white);
+  --color-background-soft: var(--vt-c-white-soft);
+  --color-background-mute: var(--vt-c-white-mute);
+
+  --color-border: var(--vt-c-divider-light-2);
+  --color-border-hover: var(--vt-c-divider-light-1);
+
+  --color-heading: var(--vt-c-text-light-1);
+  --color-text: var(--vt-c-text-light-1);
+
+  --section-gap: 160px;
+}
+
+// xs variables
+@media screen and (max-width: 576px) {
+  :root {
+  }
+}
+
+// sm variables
+@media screen and (min-width: 576px)  and (max-width: 768px) {
+  :root {
+  }
+}
+
+// md variables
+@media screen and (min-width: 768px)  and (max-width: 992px) {
+  :root {
+  }
+}
+
+// lg variables
+@media screen and (min-width: 992px)  and (max-width: 1200px) {
+  :root {
+  }
+}
+
+// xxl variables
+@media screen and (min-width: 1600px) {
+  :root {
+  }
+}
