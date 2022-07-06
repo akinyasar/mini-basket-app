@@ -28,7 +28,7 @@ import BasketButton from "../components/header/BasketButton.vue";
   width: 100%;
   display: flex;
   align-items: center;
-  position: fixed;
+  position: sticky;
   box-shadow: 2px 1px 2px 2px rgb(0 0 0 / 10%);
   background-color: var(--color-white);
   .header-row-container {

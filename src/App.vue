@@ -1,9 +1,9 @@
 <template>
-  <div class="root-container">
+  <div id="root-container">
     <div id="main-header">
       <router-view name="header"></router-view>
     </div>
-    <div class="main">
+    <div id="main">
       <router-view></router-view>
     </div>
     <div id="main-footer">
@@ -72,7 +72,7 @@ provide("displayWidth", displayWidth);
   height: 100vh;
   background-color: var(--color-light-secondary);
 }
-.root-container {
+#root-container {
   height: 100%;
   background-color: var(--color-light-secondary);
 }
