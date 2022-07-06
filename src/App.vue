@@ -12,24 +12,6 @@
   </div>
 </template>
 
-<style>
-#app {
-  height: 100vh;
-}
-.root-container {
-  height: 100%;
-}
-.main {
-  height: calc(100% - 200px);
-}
-#main-header {
-  height: 100px;
-}
-#main-footer {
-  height: 100px;
-}
-</style>
-
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
 import { provide, computed, onMounted, ref } from "vue";
@@ -84,3 +66,26 @@ onMounted(() => {
 provide("showMessage", showMessage);
 provide("displayWidth", displayWidth);
 </script>
+
+<style>
+#app {
+  height: 100vh;
+  background-color: var(--color-light-secondary);
+}
+.root-container {
+  height: 100%;
+  background-color: var(--color-light-secondary);
+}
+#main-header {
+  padding-top: 3rem;
+}
+/* .main {
+  height: calc(100% - 140px);
+}
+#main-header {
+  height: 70px;
+}
+#main-footer {
+  height: 70px;
+} */
+</style>
