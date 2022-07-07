@@ -45,16 +45,16 @@ import { provide, computed, onMounted, ref } from "vue";
     align-items: center;
     justify-content: center;
     position: absolute;
-    width: 1rem;
-    height: 1rem;
+    width: 1.1rem;
+    height: 1.1rem;
     text-align: center;
     top: 0.3rem;
-    left: 0.8rem;
+    left: 0.7rem;
     background-color: var(--color-orange);
     color: var(--color-white);
     border-radius: 50%;
     font-size: 0.7rem;
-    font-weight: 600;
+    font-weight: 700;
   }
 }
 </style>

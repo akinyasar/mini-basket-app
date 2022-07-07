@@ -33,7 +33,7 @@ import BasketButton from "../components/header/BasketButton.vue";
   background-color: var(--color-white);
   .header-row-container {
     width: 100%;
-    padding: 0.7rem 10rem;
+    padding: 0.9rem 10rem;
     .header-left {
       display: flex;
       justify-content: flex-start;

@@ -32,7 +32,7 @@ const value = computed({
     position: relative;
     display: inline-block;
     width: 100%;
-    padding: 12px 11px;
+    padding: 7px 11px;
     min-width: 0;
     color: rgba(0, 0, 0, 0.85);
     font-size: 14px;
