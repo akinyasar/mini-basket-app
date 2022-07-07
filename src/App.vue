@@ -70,10 +70,12 @@ provide("displayWidth", displayWidth);
 <style>
 #app {
   height: 100vh;
+  width: 100vw;
   background-color: var(--color-light-secondary);
 }
 #root-container {
   height: 100%;
+  width: 100%;
   background-color: var(--color-light-secondary);
 }
 #main-header {

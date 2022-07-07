@@ -25,8 +25,9 @@ import { provide, computed, onMounted, ref } from "vue";
     color: var(--color-light-primary);
     font-weight: 700;
     font-size: 1rem;
-    padding: 0.5rem 1.2rem;
+    padding: 1.3rem 1.5rem;
     cursor: pointer;
+    transition: all 0.3s;
     span {
       margin-left: 0.5rem;
     }
@@ -40,6 +41,9 @@ import { provide, computed, onMounted, ref } from "vue";
     }
   }
   .basket-count-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: absolute;
     width: 1rem;
     height: 1rem;

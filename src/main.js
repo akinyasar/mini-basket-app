@@ -5,6 +5,7 @@ import App from "./App.vue";
 import router from "./router";
 import antDesign from "ant-design-vue";
 import VueSweetalert2 from "vue-sweetalert2";
+import "ant-design-vue/dist/antd.css";
 import "sweetalert2/dist/sweetalert2.min.css";
 import "@/assets/styles/variables.scss";
 import "@/assets/styles/global.scss";
