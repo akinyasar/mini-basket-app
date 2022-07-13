@@ -2,11 +2,14 @@
   <a-row>
     <a-col
       v-for="(item, index) in state.productList"
+      :key="index"
       :xs="12"
       :sm="8"
       :md="6"
       :lg="4"
     >
+      <product-card :product="item" />
+      <product-card :product="item" />
       <product-card :product="item" />
     </a-col>
   </a-row>

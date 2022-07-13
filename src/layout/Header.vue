@@ -1,15 +1,19 @@
 <template>
   <div class="header-container">
     <a-row class="header-row-container">
-      <a-col class="header-left" :span="6">
+      <a-col class="header-left xs-order-1 sm-order-1" :xs="12" :md="6">
         <router-link to="/">
           <img src="/icons/logo.svg" alt="logo" />
         </router-link>
       </a-col>
-      <a-col class="header-search-bar" :span="12">
+      <a-col
+        class="header-search-bar xs-order-3 sm-order-3 xs-mt-1 xs-plr-2 sm-mt-1 sm-plr-3"
+        :xs="24"
+        :md="12"
+      >
         <HeaderSearchBar />
       </a-col>
-      <a-col class="header-right" :span="6">
+      <a-col class="header-right xs-order-2 sm-order-2" :xs="12" :md="6">
         <BasketButton />
       </a-col>
     </a-row>
@@ -49,6 +53,26 @@ import BasketButton from "../components/header/BasketButton.vue";
       justify-content: flex-end;
       align-items: center;
     }
+  }
+}
+</style>
+
+<style lang="scss">
+@import "@/assets/styles/global.scss";
+
+@media only screen and (max-width: $sm) {
+  .header-row-container {
+    padding: 0.9rem 1rem !important;
+  }
+}
+@media only screen and (min-width: $sm) and (max-width: $md) {
+  .header-row-container {
+    padding: 0.9rem 3rem !important;
+  }
+}
+@media only screen and (min-width: $md) and (max-width: $lg) {
+  .header-row-container {
+    padding: 0.9rem 6rem !important;
   }
 }
 </style>

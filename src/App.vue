@@ -81,13 +81,8 @@ provide("displayWidth", displayWidth);
 #main-header {
   padding-top: 3rem;
 }
-/* .main {
-  height: calc(100% - 140px);
+#main {
+  background-color: var(--color-light-secondary);
+  padding: 3rem;
 }
-#main-header {
-  height: 70px;
-}
-#main-footer {
-  height: 70px;
-} */
 </style>
