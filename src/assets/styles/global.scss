@@ -1313,6 +1313,15 @@ body {
 .align-content-center {
   align-content: center !important;
 }
+.align-sbetween {
+  align-items: space-between !important;
+}
+.align-saround {
+  align-items: space-around !important;
+}
+.justify-sbetween {
+  justify-content: space-between !important;
+}
 .justify-end {
   justify-content: flex-end !important;
 }

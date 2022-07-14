@@ -1,6 +1,6 @@
 <template>
   <div class="basket-button-container">
-    <a-button>
+    <a-button @click="() => router.push('/basket')">
       <div class="basket-count-badge">5</div>
       <i class="bx bx-basket bx-sm"></i>
       <span>Sepetim</span>
@@ -10,6 +10,9 @@
 
 <script setup>
 import { provide, computed, onMounted, ref } from "vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 </script>
 
 <style scoped lang="scss">

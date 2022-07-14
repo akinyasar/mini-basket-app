@@ -67,7 +67,9 @@ provide("showMessage", showMessage);
 provide("displayWidth", displayWidth);
 </script>
 
-<style>
+<style lang="scss">
+@import "@/assets/styles/global.scss";
+
 #app {
   height: 100vh;
   width: 100vw;
@@ -84,5 +86,21 @@ provide("displayWidth", displayWidth);
 #main {
   background-color: var(--color-light-secondary);
   padding: 3rem;
+}
+
+@media only screen and (max-width: $sm) {
+  #main {
+    padding: 2rem 2rem !important;
+  }
+}
+@media only screen and (min-width: $sm) and (max-width: $md) {
+  #main {
+    padding: 3rem 3rem !important;
+  }
+}
+@media only screen and (min-width: $md) {
+  #main {
+    padding: 3rem 4rem !important;
+  }
 }
 </style>
