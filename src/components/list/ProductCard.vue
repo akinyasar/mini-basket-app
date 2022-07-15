@@ -9,7 +9,11 @@
         <span class="product-card-price"
           >{{ product.price }} {{ product.currency }}</span
         >
-        <a-button class="product-card-button" @click="addToBasket" size="large">
+        <a-button
+          class="product-card-button"
+          @click="addToBasket(product)"
+          size="large"
+        >
           SEPETE EKLE
         </a-button>
       </div>
@@ -18,9 +22,10 @@
 </template>
 <script setup>
 import { ref, reactive, inject, computed, onMounted } from "vue";
-import { useRouter } from "vue-router";
+import { useBasketStore } from "@/stores/basket/basket.store";
+import { notification } from "ant-design-vue";
 
-const router = useRouter();
+const basketStore = useBasketStore();
 
 const props = defineProps({
   product: {
@@ -28,6 +33,22 @@ const props = defineProps({
     required: true,
   },
 });
+
+const addToBasket = (product) => {
+  try {
+    basketStore.addToBasket(product);
+  } catch (err) {
+    notification["error"]({
+      message: "Hata",
+      description: "Ooops bir hata oluştu! Ürün sepete eklenemedi.",
+    });
+  } finally {
+    notification["success"]({
+      message: "Sepete Eklendi",
+      description: `${product.name} isimli ürününüz başarıyla sepete eklendi.`,
+    });
+  }
+};
 </script>
 
 <style scoped lang="scss">

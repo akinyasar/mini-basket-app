@@ -16,7 +16,6 @@
 import { RouterLink, RouterView } from "vue-router";
 import { provide, computed, onMounted, ref } from "vue";
 import SweetAlert from "sweetalert2";
-import { message } from "ant-design-vue";
 
 const displayWidth = ref(window.innerWidth);
 
@@ -98,7 +97,7 @@ provide("displayWidth", displayWidth);
     padding: 3rem 3rem !important;
   }
 }
-@media only screen and (min-width: $md) {
+@media only screen and (min-width: $md) and (max-width: $lg) {
   #main {
     padding: 3rem 4rem !important;
   }

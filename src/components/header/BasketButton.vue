@@ -1,7 +1,7 @@
 <template>
   <div class="basket-button-container">
     <a-button @click="() => router.push('/basket')">
-      <div class="basket-count-badge">5</div>
+      <div class="basket-count-badge">{{ basketCount }}</div>
       <i class="bx bx-basket bx-sm"></i>
       <span>Sepetim</span>
     </a-button>
@@ -11,8 +11,12 @@
 <script setup>
 import { provide, computed, onMounted, ref } from "vue";
 import { useRouter } from "vue-router";
+import { useBasketStore } from "@/stores/basket/basket.store";
 
 const router = useRouter();
+const basketStore = useBasketStore();
+
+const basketCount = computed(() => basketStore.getBasketCount);
 </script>
 
 <style scoped lang="scss">
