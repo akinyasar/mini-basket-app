@@ -13,6 +13,7 @@
           class="product-card-button"
           @click="addToBasket(product)"
           size="large"
+          :loading="loading"
         >
           SEPETE EKLE
         </a-button>
@@ -25,6 +26,7 @@ import { ref, reactive, inject, computed, onMounted } from "vue";
 import { useBasketStore } from "@/stores/basket/basket.store";
 import { notification } from "ant-design-vue";
 
+const loading = ref(false);
 const basketStore = useBasketStore();
 
 const props = defineProps({
@@ -35,19 +37,23 @@ const props = defineProps({
 });
 
 const addToBasket = (product) => {
-  try {
-    basketStore.addToBasket(product);
-  } catch (err) {
-    notification["error"]({
-      message: "Hata",
-      description: "Ooops bir hata oluştu! Ürün sepete eklenemedi.",
-    });
-  } finally {
-    notification["success"]({
-      message: "Sepete Eklendi",
-      description: `${product.name} isimli ürününüz başarıyla sepete eklendi.`,
-    });
-  }
+  loading.value = true;
+  setTimeout(() => {
+    try {
+      basketStore.addToBasket(product);
+    } catch (err) {
+      notification["error"]({
+        message: "Hata",
+        description: "Ooops bir hata oluştu! Ürün sepete eklenemedi.",
+      });
+    } finally {
+      notification["success"]({
+        message: "Sepete Eklendi",
+        description: `${product.name} isimli ürününüz başarıyla sepete eklendi.`,
+      });
+      loading.value = false;
+    }
+  }, 500);
 };
 </script>
 
