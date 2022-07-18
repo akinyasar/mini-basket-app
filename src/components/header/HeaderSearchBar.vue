@@ -1,6 +1,6 @@
 <template>
   <div class="header-search-bar-container">
-    <a-input v-model:value="value" placeholder="Arama yapınız">
+    <a-input v-model:value="value" placeholder="Ürün, kategori veya marka ara">
       <template #prefix>
         <i class="bx bx-search bx-sm"></i>
       </template>
@@ -63,6 +63,7 @@ const value = computed({
       min-width: 0;
       color: rgba(0, 0, 0, 0.85);
       font-size: 14px;
+      font-weight: 500;
       line-height: 1.5715;
       border-radius: 2px;
       transition: all 0.3s;
