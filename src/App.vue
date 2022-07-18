@@ -4,7 +4,7 @@
       <router-view name="header"></router-view>
     </div>
     <div id="main">
-      <router-view></router-view>
+      <router-view style="margin-bottom: 100px"></router-view>
     </div>
     <div id="main-footer">
       <router-view name="footer"></router-view>
