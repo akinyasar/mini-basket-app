@@ -3,19 +3,16 @@
     <a-card>
       <div class="d-flex fd-col justify-center align-center">
         <a-skeleton-image class="skeleton-list-product-card-image" />
-        <a-skeleton-input
-          class="skeleton-list-product-card-name mt-3"
-          active="true"
-        />
+        <a-skeleton-input class="skeleton-list-product-card-name mt-3" active />
       </div>
       <div class="d-flex fd-row align-center justify-sbetween mt-7 width-100">
         <a-skeleton-input
           class="skeleton-list-product-card-price mt-7"
-          active="true"
+          active
         />
         <a-skeleton-input
           class="skeleton-list-product-card-button mt-7"
-          active="true"
+          active
         />
       </div>
     </a-card>
