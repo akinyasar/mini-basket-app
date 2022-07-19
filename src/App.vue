@@ -89,12 +89,12 @@ provide("displayWidth", displayWidth);
 
 @media only screen and (max-width: $sm) {
   #main {
-    padding: 2rem 2rem !important;
+    padding: 1.3rem !important;
   }
 }
 @media only screen and (min-width: $sm) and (max-width: $md) {
   #main {
-    padding: 3rem 3rem !important;
+    padding: 3rem !important;
   }
 }
 @media only screen and (min-width: $md) and (max-width: $lg) {

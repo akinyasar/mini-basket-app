@@ -1,12 +1,12 @@
 <template>
   <div class="basket-view-container">
     <a-row>
-      <a-col class="xs-order-1" :xs="24" :md="15" :lg="16" :xl="17" :xxl="18">
+      <a-col class="xs-order-1" :xs="24" :md="14" :lg="15" :xl="16" :xxl="17">
         <a-card class="basket-view-card-style">
           <template #title>
-            <p class="basket-view-title">
+            <span class="basket-view-title">
               Sepetim ({{ basketCount }})
-            </p></template
+            </span></template
           >
           <basket-product-card />
         </a-card>
@@ -14,10 +14,10 @@
       <a-col
         class="basket-view-order-menu xs-order-2"
         :xs="24"
-        :md="9"
-        :lg="8"
-        :xl="7"
-        :xxl="6"
+        :md="10"
+        :lg="9"
+        :xl="8"
+        :xxl="7"
       >
         <a-card class="basket-view-card-style">
           <basket-order-menu />
@@ -69,28 +69,28 @@ const basketCount = computed(() => basketStore.getBasketCount);
     padding: 2rem 0 0 0 !important;
   }
   .basket-view-order-menu {
-    padding-left: 1.7rem;
+    padding-left: 1rem;
   }
 }
 @media only screen and (min-width: $md) and (max-width: $lg) {
   .basket-view-container {
-    padding: 2rem 5rem 0 5rem !important;
+    padding: 2rem 2rem 0 2rem !important;
   }
   .basket-view-order-menu {
-    padding-left: 2rem;
+    padding-left: 1.2rem;
   }
 }
 @media only screen and (min-width: $lg) and (max-width: $xl) {
   .basket-view-container {
-    padding: 2rem 8rem 0 8rem !important;
+    padding: 2rem 5rem 0 5rem !important;
   }
   .basket-view-order-menu {
-    padding-left: 2.2rem;
+    padding-left: 1.8rem;
   }
 }
 @media only screen and (min-width: $xl) and (max-width: $xxl) {
   .basket-view-container {
-    padding: 2rem 11rem 0 11rem !important;
+    padding: 2rem 9rem 0 9rem !important;
   }
   .basket-view-order-menu {
     padding-left: 2.5rem;
@@ -98,7 +98,7 @@ const basketCount = computed(() => basketStore.getBasketCount);
 }
 @media only screen and (min-width: $xxl) and (max-width: $xxxl) {
   .basket-view-container {
-    padding: 2rem 15rem 0 15rem !important;
+    padding: 2rem 13rem 0 13rem !important;
   }
   .basket-view-order-menu {
     padding-left: 3rem;

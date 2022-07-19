@@ -6,32 +6,20 @@
       >
       <a-col class="basket-order-menu-price mt-2" :span="24">
         <div>
-          <span>1500</span>
-          <span class="currency"> TRY</span>
+          <span>{{ totalAmount }} </span>
+          <span class="currency"> &nbsp;{{ currency }}</span>
         </div>
       </a-col>
     </a-row>
     <a-row class="mt-4">
       <a-col class="basket-back-button" :span="12">
-        <a-button
-          @click="() => router.push('/')"
-          size="large"
-          :loading="loading"
-          block
-        >
+        <a-button @click="() => router.push('/')" size="large" block>
           <i class="bx bx-chevron-left bx-xs pr-1"></i>
           Alişverişe Dön
         </a-button></a-col
       >
       <a-col class="basket-order-button" :span="12">
-        <a-button
-          @click="addToBasket(product)"
-          size="large"
-          :loading="loading"
-          block
-        >
-          Şiparişi Tamamla
-        </a-button></a-col
+        <a-button size="large" block> Şiparişi Tamamla </a-button></a-col
       >
     </a-row>
   </div>
@@ -46,6 +34,8 @@ const router = useRouter();
 const basketStore = useBasketStore();
 
 const basketCount = computed(() => basketStore.getBasketCount);
+const totalAmount = computed(() => basketStore.getTotalAmount);
+const currency = computed(() => basketStore.getCurrency);
 </script>
 
 <style scoped lang="scss">
@@ -67,6 +57,7 @@ const basketCount = computed(() => basketStore.getBasketCount);
     padding-left: 0.5rem;
     button {
       display: flex;
+      overflow: hidden;
       align-items: center;
       justify-content: center;
       color: var(--color-white);
@@ -85,6 +76,7 @@ const basketCount = computed(() => basketStore.getBasketCount);
     padding-right: 0.5rem;
     button {
       display: flex;
+      overflow: hidden;
       align-items: center;
       justify-content: center;
       color: var(--color-dark-text);
