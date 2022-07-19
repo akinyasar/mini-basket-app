@@ -5,10 +5,15 @@
         <a-card class="basket-view-card-style">
           <template #title>
             <span class="basket-view-title">
-              Sepetim ({{ basketCount }})
+              Sepetim ({{ basketCount }} ürün)
             </span></template
           >
-          <basket-product-card />
+          <div v-for="(item, index) in productsCounts" :key="index">
+            <basket-product-card
+              :product="getProductById(index)"
+              :productCount="item"
+            />
+          </div>
         </a-card>
       </a-col>
       <a-col
@@ -36,6 +41,13 @@ import { useBasketStore } from "@/stores/basket/basket.store";
 const basketStore = useBasketStore();
 
 const basketCount = computed(() => basketStore.getBasketCount);
+const basketProducts = computed(() => basketStore.getBasket);
+const productsCounts = computed(() => basketStore.getProductsCounts);
+
+const getProductById = (id) => {
+  return basketProducts.value.find((item) => item.id == id);
+};
+onMounted(() => {});
 </script>
 
 <style scoped lang="scss">
@@ -54,7 +66,7 @@ const basketCount = computed(() => basketStore.getBasketCount);
 <style lang="scss">
 @import "@/assets/styles/global.scss";
 
-////// Container and order menu media query //////
+////// Container and order menu media queries //////
 
 @media only screen and (max-width: $sm) {
   .basket-view-container {

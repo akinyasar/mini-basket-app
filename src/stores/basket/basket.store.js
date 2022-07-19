@@ -9,10 +9,12 @@ export const useBasketStore = defineStore({
     ),
   }),
   getters: {
-    getBasket: () => this.basket,
+    getBasket() {
+      return this.basket;
+    },
     getBasketCount() {
       //return this.basket.length;
-      const nonRepeatBasket = this.getProductsCount;
+      const nonRepeatBasket = this.getProductsCounts;
       return Object.keys(nonRepeatBasket).length;
     },
     getCurrency() {
@@ -25,7 +27,7 @@ export const useBasketStore = defineStore({
       });
       return total.toFixed(2);
     },
-    getProductsCount() {
+    getProductsCounts() {
       const count = {};
       this.basket.forEach((item) => {
         if (count[item.id]) {
