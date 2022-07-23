@@ -6,13 +6,23 @@
           <template #title>
             <span class="basket-view-title">
               Sepetim ({{ basketCount }} ürün)
-            </span></template
+            </span>
+          </template>
+          <template #extra>
+            <a style="" @click="clearBasket">Sepeti boşalt</a>
+          </template>
+          <div
+            v-if="basketCount"
+            v-for="(item, index) in productsCounts"
+            :key="index"
           >
-          <div v-for="(item, index) in productsCounts" :key="index">
             <basket-product-card
               :product="getProductById(index)"
               :productCount="item"
             />
+          </div>
+          <div v-else class="empty-basket">
+            Sepetinizde ürün bulunmamaktadır.
           </div>
         </a-card>
       </a-col>
@@ -33,7 +43,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, inject, computed, onMounted } from "vue";
+import { computed } from "vue";
 import BasketProductCard from "@/components/basket/BasketProductCard.vue";
 import BasketOrderMenu from "@/components/basket/BasketOrderMenu.vue";
 import { useBasketStore } from "@/stores/basket/basket.store";
@@ -47,7 +57,9 @@ const productsCounts = computed(() => basketStore.getProductsCounts);
 const getProductById = (id) => {
   return basketProducts.value.find((item) => item.id == id);
 };
-onMounted(() => {});
+const clearBasket = () => {
+  basketStore.clearBasket();
+};
 </script>
 
 <style scoped lang="scss">
@@ -59,6 +71,11 @@ onMounted(() => {});
   .basket-view-card-style {
     width: 100%;
     border-radius: 15px;
+  }
+  .empty-basket {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--color-light-primary);
   }
 }
 </style>

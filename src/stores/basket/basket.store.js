@@ -18,7 +18,7 @@ export const useBasketStore = defineStore({
       return Object.keys(nonRepeatBasket).length;
     },
     getCurrency() {
-      return this.basket[0].currency;
+      if (this.basket.length > 0) return this.basket[0].currency;
     },
     getTotalAmount() {
       let total = 0;
@@ -46,6 +46,27 @@ export const useBasketStore = defineStore({
     },
     removeFromBasket(product) {
       this.basket = this.basket.filter((item) => item.id !== product.id);
+      localStorage.setItem("basket", JSON.stringify(this.basket));
+    },
+    clearBasket() {
+      this.basket = [];
+      localStorage.setItem("basket", JSON.stringify(this.basket));
+    },
+    increaseProductCount(product) {
+      this.basket.push(product);
+      localStorage.setItem("basket", JSON.stringify(this.basket));
+    },
+    decreaseProductCount(product) {
+      let isDeleted = false;
+      this.basket.forEach((item, index) => {
+        if (item.id === product.id) {
+          if (!isDeleted) {
+            this.basket.splice(index, 1);
+            isDeleted = true;
+          }
+        }
+      });
+      localStorage.setItem("basket", JSON.stringify(this.basket));
     },
   },
 });
