@@ -10,7 +10,7 @@
           >{{ product.price }} {{ product.currency }}</span
         >
         <a-button
-          class="product-card-button"
+          class="primary-button"
           @click="addToBasket(product)"
           size="large"
           :loading="loading"
@@ -67,13 +67,6 @@ const addToBasket = (product) => {
     font-size: 1rem;
     font-weight: bold;
     color: var(--color-dark-text);
-  }
-  .product-card-button {
-    color: var(--color-white);
-    background-color: var(--color-orange);
-    border-color: var(--color-orange);
-    font-weight: 500;
-    padding: 0rem 1.5rem;
   }
 }
 </style>

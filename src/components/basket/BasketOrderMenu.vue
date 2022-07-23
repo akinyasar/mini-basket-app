@@ -12,14 +12,21 @@
       </a-col>
     </a-row>
     <a-row class="mt-4">
-      <a-col class="basket-back-button" :span="12">
-        <a-button @click="() => router.push('/')" size="large" block>
+      <a-col class="pr-2" :span="12">
+        <a-button
+          class="secondary-button"
+          size="large"
+          block
+          @click="() => router.push('/')"
+        >
           <i class="bx bx-chevron-left bx-xs pr-1"></i>
           Alişverişe Dön
         </a-button></a-col
       >
-      <a-col class="basket-order-button" :span="12">
-        <a-button size="large" block> Şiparişi Tamamla </a-button></a-col
+      <a-col class="pl-2" :span="12">
+        <a-button class="primary-button" size="large" block>
+          Şiparişi Tamamla
+        </a-button></a-col
       >
     </a-row>
   </div>
@@ -52,44 +59,6 @@ const currency = computed(() => basketStore.getCurrency);
       font-size: 0.8rem;
       color: var(--color-light-primary);
     }
-  }
-  .basket-order-button {
-    padding-left: 0.5rem;
-    button {
-      display: flex;
-      overflow: hidden;
-      align-items: center;
-      justify-content: center;
-      color: var(--color-white);
-      background-color: var(--color-orange);
-      border-color: var(--color-orange);
-      font-weight: 500;
-      padding: 0rem 1.5rem;
-      border-radius: 5px;
-      transition: all 0.4s;
-    }
-    button:hover {
-      background-color: var(--color-orange-darker);
-    }
-  }
-  .basket-back-button {
-    padding-right: 0.5rem;
-    button {
-      display: flex;
-      overflow: hidden;
-      align-items: center;
-      justify-content: center;
-      color: var(--color-dark-text);
-      background-color: var(--color-white);
-      border-color: var(--color-light-primary);
-      font-weight: 500;
-      padding: 0rem 1.5rem;
-      border-radius: 5px;
-      transition: all 0.4s;
-    }
-  }
-  button:hover {
-    background-color: var(--color-light-secondary);
   }
 }
 </style>
