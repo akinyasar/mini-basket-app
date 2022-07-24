@@ -14,7 +14,16 @@
     </a-col>
   </a-row>
   <a-row v-else>
-    <a-col v-for="n in 6" :xs="24" :sm="12" :md="8" :lg="6" :xxl="4" :xxxl="3">
+    <a-col
+      v-for="(item, index) in 6"
+      :key="index"
+      :xs="24"
+      :sm="12"
+      :md="8"
+      :lg="6"
+      :xxl="4"
+      :xxxl="3"
+    >
       <skeleton-list-product-card />
     </a-col>
   </a-row>
@@ -60,15 +69,6 @@ const getProductList = async () => {
   }
 };
 
-const testSwal = () => {
-  //router.push("/basket");
-  showMessage({
-    title: "test title",
-    type: "error",
-    message: "deneme",
-    showCancelButton: true,
-  });
-};
 onMounted(() => {
   getProductList();
 });

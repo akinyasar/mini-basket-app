@@ -64,12 +64,11 @@
 </template>
 
 <script setup>
-import { ref, reactive, inject, computed, onMounted } from "vue";
 import { useBasketStore } from "@/stores/basket/basket.store";
 
 const basketStore = useBasketStore();
 
-const props = defineProps({
+defineProps({
   product: {
     type: Object,
     required: true,

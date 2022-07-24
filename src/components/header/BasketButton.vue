@@ -9,7 +9,7 @@
 </template>
 
 <script setup>
-import { provide, computed, onMounted, ref } from "vue";
+import { computed } from "vue";
 import { useRouter } from "vue-router";
 import { useBasketStore } from "@/stores/basket/basket.store";
 

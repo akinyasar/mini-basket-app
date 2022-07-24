@@ -64,14 +64,19 @@ const submitOrder = async () => {
     };
   });
   state.loading = true;
-  const { response, success, status } = await submitOrderService(orderList);
+  const { success, status } = await submitOrderService(orderList);
   if (success) {
+    basketStore.clearBasket();
     showMessage({
       title: "Başarılı",
       type: "success",
       message: "Siparişiniz başarıyla alındı.",
+      callback: ({ isConfirmed }) => {
+        if (isConfirmed) {
+          router.push("/");
+        }
+      },
     });
-    basketStore.clearBasket();
   } else if (status === 404) {
     showMessage({
       title: "Stok Hatası",

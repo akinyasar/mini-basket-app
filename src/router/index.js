@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import ListView from "@/views/ListView.vue";
-import Header from "@/layout/Header.vue";
-import Footer from "@/layout/Footer.vue";
+import HeaderView from "@/layout/HeaderView.vue";
+import FooterView from "@/layout/FooterView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -11,8 +11,8 @@ const router = createRouter({
       name: "list",
       components: {
         default: ListView,
-        header: Header,
-        footer: Footer,
+        header: HeaderView,
+        footer: FooterView,
       },
     },
     {
@@ -20,8 +20,8 @@ const router = createRouter({
       name: "basket",
       components: {
         default: () => import("../views/BasketView.vue"),
-        header: Header,
-        footer: Footer,
+        header: HeaderView,
+        footer: FooterView,
       },
     },
   ],

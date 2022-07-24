@@ -24,8 +24,8 @@
 </template>
 
 <script setup>
-import { RouterLink, RouterView } from "vue-router";
-import { provide, watch, onMounted, ref } from "vue";
+import { RouterLink } from "vue-router";
+import { watch, onMounted, ref } from "vue";
 import HeaderSearchBar from "@/components/header/HeaderSearchBar.vue";
 import BasketButton from "../components/header/BasketButton.vue";
 import { useSearchStore } from "@/stores/search/search.store.js";

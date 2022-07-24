@@ -22,14 +22,14 @@
   </div>
 </template>
 <script setup>
-import { ref, reactive, inject, computed, onMounted } from "vue";
+import { ref} from "vue";
 import { useBasketStore } from "@/stores/basket/basket.store";
 import { notification } from "ant-design-vue";
 
 const loading = ref(false);
 const basketStore = useBasketStore();
 
-const props = defineProps({
+defineProps({
   product: {
     type: Object,
     required: true,
