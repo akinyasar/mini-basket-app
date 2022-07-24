@@ -13,7 +13,7 @@
 </template>
 
 <script setup>
-import { RouterLink, RouterView } from "vue-router";
+import {RouterView } from "vue-router";
 import { provide, computed, onMounted, ref } from "vue";
 import SweetAlert from "sweetalert2";
 

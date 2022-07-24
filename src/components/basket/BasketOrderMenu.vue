@@ -29,7 +29,7 @@
           size="large"
           block
           :loading="state.loading"
-          @click="confirmOrder"
+          @click="submitOrder"
         >
           Şiparişi Tamamla
         </a-button></a-col
@@ -39,13 +39,14 @@
 </template>
 
 <script setup>
-import { ref, reactive, computed, onMounted } from "vue";
+import { inject, reactive, computed } from "vue";
 import { useRouter } from "vue-router";
 import { useBasketStore } from "@/stores/basket/basket.store";
 import { submitOrderService } from "@/services/basket/basket.services.js";
 
 const router = useRouter();
 const basketStore = useBasketStore();
+const showMessage = inject("showMessage");
 
 const basketCount = computed(() => basketStore.getBasketCount);
 const totalAmount = computed(() => basketStore.getTotalAmount);
@@ -55,7 +56,7 @@ const state = reactive({
   loading: false,
 });
 
-const confirmOrder = async () => {
+const submitOrder = async () => {
   let orderList = basketStore.getBasket.map((product) => {
     return {
       id: product.id,
@@ -63,15 +64,30 @@ const confirmOrder = async () => {
     };
   });
   state.loading = true;
-  const { response, success } = await submitOrderService(orderList);
+  const { response, success, status } = await submitOrderService(orderList);
   if (success) {
-    console.log(response);
+    showMessage({
+      title: "Başarılı",
+      type: "success",
+      message: "Siparişiniz başarıyla alındı.",
+    });
+    basketStore.clearBasket();
+  } else if (status === 404) {
+    showMessage({
+      title: "Stok Hatası",
+      type: "error",
+      message:
+        "Diş Fırçası isimli üründe stok yetersiz. Lütfen sepetinizi kontrol ediniz.",
+    });
   } else {
-    console.log("error: ", response);
+    showMessage({
+      title: "Hata",
+      type: "error",
+      message: "Siparişiniz alınırken bir hata oluştu.",
+    });
   }
   state.loading = false;
 };
-onMounted(() => {});
 </script>
 
 <style scoped lang="scss">

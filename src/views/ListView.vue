@@ -20,7 +20,7 @@
   </a-row>
 </template>
 <script setup>
-import { ref, reactive, inject, computed, onMounted } from "vue";
+import { reactive, inject, computed, onMounted } from "vue";
 import { getProductListService } from "@/services/list/list.services";
 import ListProductCard from "@/components/list/ListProductCard.vue";
 import SkeletonListProductCard from "@/components/list/SkeletonListProductCard.vue";
