@@ -70,8 +70,8 @@ provide("displayWidth", displayWidth);
 @import "@/assets/styles/global.scss";
 
 #app {
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   background-color: var(--color-light-secondary);
 }
 #root-container {

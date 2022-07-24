@@ -11,16 +11,11 @@
           <template #extra>
             <a style="" @click="clearBasket">Sepeti boşalt</a>
           </template>
-          <div
-            v-if="basketCount"
-            v-for="(item, index) in productsCounts"
-            :key="index"
-          >
-            <basket-product-card
-              :product="getProductById(index)"
-              :productCount="item"
-            />
-          </div>
+          <template v-if="basketProducts.length > 0">
+            <div v-for="(item, index) in basketProducts" :key="index">
+              <basket-product-card :product="item" />
+            </div>
+          </template>
           <div v-else class="empty-basket">
             Sepetinizde ürün bulunmamaktadır.
           </div>
@@ -52,11 +47,7 @@ const basketStore = useBasketStore();
 
 const basketCount = computed(() => basketStore.getBasketCount);
 const basketProducts = computed(() => basketStore.getBasket);
-const productsCounts = computed(() => basketStore.getProductsCounts);
 
-const getProductById = (id) => {
-  return basketProducts.value.find((item) => item.id == id);
-};
 const clearBasket = () => {
   basketStore.clearBasket();
 };

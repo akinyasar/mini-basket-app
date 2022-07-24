@@ -32,7 +32,7 @@
             class="d-flex align-center justify-center"
             id="inputNumber"
             size="small"
-            :value="productCount"
+            :value="product.count"
             :controls="false"
             :min="1"
             disabled
@@ -72,9 +72,6 @@ const basketStore = useBasketStore();
 const props = defineProps({
   product: {
     type: Object,
-    required: true,
-  },
-  productCount: {
     required: true,
   },
 });

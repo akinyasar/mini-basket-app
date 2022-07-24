@@ -24,7 +24,13 @@
         </a-button></a-col
       >
       <a-col class="pl-2" :span="12">
-        <a-button class="primary-button" size="large" block>
+        <a-button
+          class="primary-button"
+          size="large"
+          block
+          :loading="state.loading"
+          @click="confirmOrder"
+        >
           Şiparişi Tamamla
         </a-button></a-col
       >
@@ -33,9 +39,10 @@
 </template>
 
 <script setup>
-import { ref, reactive, inject, computed, onMounted } from "vue";
+import { ref, reactive, computed, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import { useBasketStore } from "@/stores/basket/basket.store";
+import { submitOrderService } from "@/services/basket/basket.services.js";
 
 const router = useRouter();
 const basketStore = useBasketStore();
@@ -43,6 +50,28 @@ const basketStore = useBasketStore();
 const basketCount = computed(() => basketStore.getBasketCount);
 const totalAmount = computed(() => basketStore.getTotalAmount);
 const currency = computed(() => basketStore.getCurrency);
+
+const state = reactive({
+  loading: false,
+});
+
+const confirmOrder = async () => {
+  let orderList = basketStore.getBasket.map((product) => {
+    return {
+      id: product.id,
+      amount: product.count,
+    };
+  });
+  state.loading = true;
+  const { response, success } = await submitOrderService(orderList);
+  if (success) {
+    console.log(response);
+  } else {
+    console.log("error: ", response);
+  }
+  state.loading = false;
+};
+onMounted(() => {});
 </script>
 
 <style scoped lang="scss">

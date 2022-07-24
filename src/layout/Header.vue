@@ -1,5 +1,5 @@
 <template>
-  <div class="header-container">
+  <div class="header-container" :class="{ 'is-fixed': isFixed }" ref="element">
     <a-row class="header-row-container">
       <a-col class="header-left xs-order-1 sm-order-1" :xs="12" :md="6">
         <router-link to="/">
@@ -25,6 +25,28 @@ import { RouterLink, RouterView } from "vue-router";
 import { provide, computed, onMounted, ref } from "vue";
 import HeaderSearchBar from "@/components/header/HeaderSearchBar.vue";
 import BasketButton from "../components/header/BasketButton.vue";
+
+const isFixed = ref(false);
+const element = ref(null);
+
+const checkScroll = () => {
+  // scroll olduğunda header'ın fixed olmasını sağlar
+  if (element.value) {
+    if (
+      window.scrollY >
+      element.value.clientHeight +
+        +getComputedStyle(document.documentElement).fontSize.replace("px", "") *
+          3
+    ) {
+      isFixed.value = true;
+    } else {
+      isFixed.value = false;
+    }
+  }
+};
+onMounted(() => {
+  window.addEventListener("scroll", checkScroll);
+});
 </script>
 
 <style scoped lang="scss">
@@ -35,6 +57,13 @@ import BasketButton from "../components/header/BasketButton.vue";
   position: sticky;
   box-shadow: 2px 1px 2px 2px rgb(0 0 0 / 10%);
   background-color: var(--color-white);
+  &.is-fixed {
+    animation: sticky-transition-show 0.2s forwards linear;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+  }
   .header-row-container {
     width: 100%;
     padding: 0.9rem 10rem;
@@ -53,6 +82,14 @@ import BasketButton from "../components/header/BasketButton.vue";
       justify-content: flex-end;
       align-items: center;
     }
+  }
+}
+@keyframes sticky-transition-show {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
   }
 }
 </style>

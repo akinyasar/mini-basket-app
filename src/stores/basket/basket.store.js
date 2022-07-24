@@ -13,9 +13,7 @@ export const useBasketStore = defineStore({
       return this.basket;
     },
     getBasketCount() {
-      //return this.basket.length;
-      const nonRepeatBasket = this.getProductsCounts;
-      return Object.keys(nonRepeatBasket).length;
+      return this.basket.length;
     },
     getCurrency() {
       if (this.basket.length > 0) return this.basket[0].currency;
@@ -23,49 +21,48 @@ export const useBasketStore = defineStore({
     getTotalAmount() {
       let total = 0;
       this.basket.forEach((item) => {
-        total += parseFloat(item.price);
+        total += parseFloat(item.price) * item.count;
       });
       return total.toFixed(2);
-    },
-    getProductsCounts() {
-      const count = {};
-      this.basket.forEach((item) => {
-        if (count[item.id]) {
-          count[item.id] += 1;
-        } else {
-          count[item.id] = 1;
-        }
-      });
-      return count;
     },
   },
   actions: {
     addToBasket(product) {
-      this.basket.push(product);
-      localStorage.setItem("basket", JSON.stringify(this.basket));
+      product.count = 1;
+      let alreadyInBasket = this.basket.find((item) => item.id === product.id);
+      if (!!alreadyInBasket) {
+        alreadyInBasket.count += 1;
+      } else {
+        this.basket.push(product);
+      }
+      this.updateCache();
     },
     removeFromBasket(product) {
       this.basket = this.basket.filter((item) => item.id !== product.id);
-      localStorage.setItem("basket", JSON.stringify(this.basket));
+      this.updateCache();
     },
     clearBasket() {
       this.basket = [];
-      localStorage.setItem("basket", JSON.stringify(this.basket));
+      this.updateCache();
     },
     increaseProductCount(product) {
-      this.basket.push(product);
-      localStorage.setItem("basket", JSON.stringify(this.basket));
+      const alreadyInBasket = this.basket.find(
+        (item) => item.id === product.id
+      );
+      alreadyInBasket.count += 1;
+      this.updateCache();
     },
     decreaseProductCount(product) {
-      let isDeleted = false;
-      this.basket.forEach((item, index) => {
-        if (item.id === product.id) {
-          if (!isDeleted) {
-            this.basket.splice(index, 1);
-            isDeleted = true;
-          }
-        }
-      });
+      const alreadyInBasket = this.basket.find(
+        (item) => item.id === product.id
+      );
+      alreadyInBasket.count -= 1;
+      if (alreadyInBasket.count === 0) {
+        this.removeFromBasket(product);
+      }
+      this.updateCache();
+    },
+    updateCache() {
       localStorage.setItem("basket", JSON.stringify(this.basket));
     },
   },

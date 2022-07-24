@@ -41,16 +41,17 @@ const addToBasket = (product) => {
   setTimeout(() => {
     try {
       basketStore.addToBasket(product);
+      notification["success"]({
+        message: "Sepete Eklendi",
+        description: `${product.name} isimli ürününüz başarıyla sepete eklendi.`,
+      });
     } catch (err) {
+      console.log(err);
       notification["error"]({
         message: "Hata",
         description: "Ooops bir hata oluştu! Ürün sepete eklenemedi.",
       });
     } finally {
-      notification["success"]({
-        message: "Sepete Eklendi",
-        description: `${product.name} isimli ürününüz başarıyla sepete eklendi.`,
-      });
       loading.value = false;
     }
   }, 500);
