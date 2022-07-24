@@ -11,7 +11,10 @@
         :xs="24"
         :md="12"
       >
-        <HeaderSearchBar />
+        <HeaderSearchBar
+          v-model:value="searchKey"
+          @enterClicked="onClickEnter"
+        />
       </a-col>
       <a-col class="header-right xs-order-2 sm-order-2" :xs="12" :md="6">
         <BasketButton />
@@ -22,13 +25,24 @@
 
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
-import { provide, computed, onMounted, ref } from "vue";
+import { provide, watch, onMounted, ref } from "vue";
 import HeaderSearchBar from "@/components/header/HeaderSearchBar.vue";
 import BasketButton from "../components/header/BasketButton.vue";
+import { useSearchStore } from "@/stores/search/search.store.js";
 
 const isFixed = ref(false);
 const element = ref(null);
+const searchKey = ref("");
+const searchStore = useSearchStore();
 
+const onClickEnter = () => {
+  searchStore.setSearchKey(searchKey.value);
+};
+const onChangeSearchKey = (value) => {
+  if (value.length === 0) {
+    onClickEnter();
+  }
+};
 const checkScroll = () => {
   // scroll olduğunda header'ın fixed olmasını sağlar
   if (element.value) {
@@ -47,6 +61,7 @@ const checkScroll = () => {
 onMounted(() => {
   window.addEventListener("scroll", checkScroll);
 });
+watch(searchKey, onChangeSearchKey);
 </script>
 
 <style scoped lang="scss">

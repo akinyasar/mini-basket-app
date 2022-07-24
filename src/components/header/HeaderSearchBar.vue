@@ -1,6 +1,10 @@
 <template>
   <div class="header-search-bar-container">
-    <a-input v-model:value="value" placeholder="Ürün, kategori veya marka ara">
+    <a-input
+      v-model:value="value"
+      placeholder="Ürün, kategori veya marka ara"
+      @keypress.enter="$emit('enterClicked')"
+    >
       <template #prefix>
         <i class="bx bx-search bx-sm"></i>
       </template>
@@ -14,7 +18,7 @@ import { computed } from "vue";
 const props = defineProps({
   value: String,
 });
-const emit = defineEmits(["update:value"]);
+const emit = defineEmits(["update:value", "enterClicked"]);
 
 const value = computed({
   get: () => props.value,

@@ -1,7 +1,7 @@
 <template>
   <a-row v-if="!state.loading">
     <a-col
-      v-for="(item, index) in state.productList"
+      v-for="(item, index) in searchedList"
       :key="index"
       :xs="24"
       :sm="12"
@@ -24,11 +24,24 @@ import { ref, reactive, inject, computed, onMounted } from "vue";
 import { getProductListService } from "@/services/list/list.services";
 import ListProductCard from "@/components/list/ListProductCard.vue";
 import SkeletonListProductCard from "@/components/list/SkeletonListProductCard.vue";
+import { useSearchStore } from "@/stores/search/search.store.js";
+
+const searchStore = useSearchStore();
+const searchKey = computed(() => searchStore.searchKey);
 
 const showMessage = inject("showMessage");
 const state = reactive({
   productList: [],
   loading: false,
+});
+
+const searchedList = computed(() => {
+  if (!searchKey.value) {
+    return state.productList;
+  }
+  return state.productList.filter((item) => {
+    return item.name.toLowerCase().includes(searchKey.value.toLowerCase());
+  });
 });
 
 const getProductList = async () => {

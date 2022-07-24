@@ -30,7 +30,7 @@ export const useBasketStore = defineStore({
     addToBasket(product) {
       product.count = 1;
       let alreadyInBasket = this.basket.find((item) => item.id === product.id);
-      if (!!alreadyInBasket) {
+      if (alreadyInBasket) {
         alreadyInBasket.count += 1;
       } else {
         this.basket.push(product);
