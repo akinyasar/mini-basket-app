@@ -976,41 +976,6 @@ body {
 .fd-row {
   flex-direction: row !important;
 }
-.order-1 {
-  order: 1 !important;
-}
-.order-2 {
-  order: 2 !important;
-}
-
-.order-3 {
-  order: 3 !important;
-}
-
-.order-4 {
-  order: 4 !important;
-}
-
-.order-5 {
-  order: 5 !important;
-}
-
-.order-6 {
-  order: 6 !important;
-}
-
-.order-7 {
-  order: 7 !important;
-}
-
-.order-8 {
-  order: 8 !important;
-}
-
-.order-9 {
-  order: 9 !important;
-}
-
 /* Sweet Alert Base CSS */
 .swal2-popup {
   width: 37rem !important;
@@ -1020,7 +985,7 @@ body {
 
 .swal2-title {
   padding: 16px 24px !important;
-  background: #fff;
+  background: var(--color-white);
   border-bottom: 1px solid #f0f0f0;
   text-align: left !important;
   border-radius: 10px 10px 0 0;
@@ -1065,120 +1030,19 @@ button.swal2-styled {
 }
 
 .swal2-styled.swal2-confirm {
-  color: #fff;
-  background: #5f63f2 !important;
+  color: var(--color-white);
+  background: var(--color-orange) !important;
 
   &:focus,
   &:hover,
   &:active {
-    background: #4347d9 !important;
+    background: var(--color-orange-darker) !important;
   }
 }
 .ant-btn-lg {
   font-size: 14px !important;
 }
 
-.word-cut {
-  overflow-wrap: break-all !important;
-  word-wrap: break-all !important;
-  word-break: break-all !important;
-  -webkit-box-orient: vertical !important;
-  -webkit-line-clamp: 1 !important;
-  text-overflow: ellipsis !important;
-  overflow: hidden !important;
-  display: -webkit-box !important;
-  &.line-2 {
-    -webkit-line-clamp: 2 !important;
-  }
-  &.line-3 {
-    -webkit-line-clamp: 3 !important;
-  }
-  &.line-4 {
-    -webkit-line-clamp: 4 !important;
-  }
-}
-.hide-scroll-x {
-  --scroll-x-type: hidden;
-  &.scroll-x-auto {
-    --scroll-x-type: auto;
-  }
-  overflow-x: var(--scroll-x-type) !important;
-}
-.hide-scroll-y {
-  overflow-y: hidden !important;
-}
-
-.scroll-y {
-  &:not(.hide-parent-scroll) {
-    &.scroll-auto {
-      overflow-y: auto !important;
-    }
-    overflow-y: scroll !important;
-  }
-  --scroll-color-primary: #f9f9f9;
-  --scroll-color-secondary: #e8e8e8;
-  &.scroll-width-0 {
-    &::-webkit-scrollbar {
-      width: 0px !important;
-    }
-  }
-  &.scroll-width-6 {
-    &::-webkit-scrollbar {
-      width: 6px !important;
-    }
-  }
-  &.scroll-width-8 {
-    &::-webkit-scrollbar {
-      width: 8px !important;
-    }
-  }
-  &.background-gradient {
-    background: linear-gradient(to bottom, transparent 92%, gray 130%);
-  }
-  &::-webkit-scrollbar {
-    width: 4px !important;
-  }
-  &::-webkit-scrollbar-track {
-    background-color: var(--scroll-color-primary) !important;
-    border-radius: 25px !important;
-  }
-  &::-webkit-scrollbar-thumb {
-    border-radius: 25px !important;
-    background-color: var(--scroll-color-secondary) !important;
-  }
-}
-.scroll-x {
-  --scroll-color-primary: #f9f9f9;
-  --scroll-color-secondary: #e8e8e8;
-  --scroll-x-width: 4px;
-  overflow-x: auto !important;
-  &::-webkit-scrollbar {
-    height: var(--scroll-x-width) !important;
-  }
-  &.scroll-width-0 {
-    --scroll-x-width: 0px !important;
-  }
-  &.scroll-width-1 {
-    --scroll-x-width: 1px !important;
-  }
-  &.scroll-width-2 {
-    --scroll-x-width: 2px !important;
-  }
-  &.scroll-width-3 {
-    --scroll-x-width: 3px !important;
-  }
-  &::-webkit-scrollbar-track {
-    background-color: var(--scroll-color-primary) !important;
-    border-radius: 25px !important;
-  }
-  &::-webkit-scrollbar-thumb {
-    border-radius: 25px !important;
-    background-color: var(--scroll-color-secondary) !important;
-  }
-}
-.cursor-pointer {
-  cursor: pointer !important;
-}
 .primary-button {
   display: flex;
   overflow: hidden;
