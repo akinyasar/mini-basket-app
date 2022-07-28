@@ -38,7 +38,7 @@ const value = computed({
     width: 100%;
     padding: 7px 11px;
     min-width: 0;
-    color: rgba(0, 0, 0, 0.85);
+    color: var(--color-search-bar-dark);
     font-size: 14px;
     line-height: 1.5715;
     background-image: none;
@@ -65,7 +65,7 @@ const value = computed({
       display: inline-block;
       width: 100%;
       min-width: 0;
-      color: rgba(0, 0, 0, 0.85);
+      color: var(--color-search-bar-dark);
       font-size: 14px;
       font-weight: 500;
       line-height: 1.5715;
