@@ -1,49 +1,54 @@
 import { describe, it, expect, vi } from "vitest";
-
 import { mount } from "@vue/test-utils";
 import BasketButton from "../header/BasketButton.vue";
 import { createTestingPinia } from "@pinia/testing";
+//import { createRouter, createWebHistory } from "vue-router";
+//import { routes } from "./routes";
 
 describe("BasketButton", () => {
+  let wrapper;
+  wrapper = mount(BasketButton, {
+    global: {
+      plugins: [
+        createTestingPinia({
+          createSpy: vi.fn,
+        }),
+      ],
+    },
+  });
   it("should render", () => {
-    const wrapper = mount(BasketButton, {
-      global: {
-        plugins: [
-          createTestingPinia({
-            createSpy: vi.fn,
-          }),
-        ],
-      },
-    });
     expect(wrapper.find("a-button").exists()).toBeTruthy();
     const button = wrapper.find("a-button");
     expect(button.text()).toContain("Sepetim");
   });
 
-  //   const mockRoute = {
-  //     params: {
-  //       id: 1,
-  //     },
-  //   };
-  //   const mockRouter = {
-  //     push: vi.fn(),
-  //   };
-  //   it("should push router", async () => {
-  //     const wrapper = mount(BasketButton, {
-  //       global: {
-  //         mocks: {
-  //           $route: mockRoute,
-  //           $router: mockRouter,
-  //         },
-  //         plugins: [
-  //           createTestingPinia({
-  //             createSpy: vi.fn,
-  //           }),
-  //         ],
-  //       },
-  //     });
-  //     await wrapper.find("a-button").trigger("click");
-  //     expect(mockRouter.push).toHaveBeenCalledTimes(1);
-  //     expect(mockRouter.push).toHaveBeenCalledWith("/basket");
+  // let router;
+  // beforeEach(async () => {
+  //   router = createRouter({
+  //     history: createWebHistory(),
+  //     routes: routes,
   //   });
+  // });
+  // test("it should be routing", async () => { // this test is not working
+  //   await router.isReady();
+  //   const wrapper = mount(BasketButton, {
+  //     global: {
+  //       plugins: [
+  //         router,
+  //         createTestingPinia({
+  //           createSpy: vi.fn,
+  //         }),
+  //       ],
+  //     },
+  //   });
+  //   await wrapper.find("a-button").trigger("click");
+  //   await flushPromises();
+  //   console.log("-------------", router.currentRoute);
+  // });
 });
+const originalWarn = window.console.warn;
+window.console.warn = (e) => {
+  return e.includes("If this is a native custom element")
+    ? ""
+    : originalWarn(e);
+};
