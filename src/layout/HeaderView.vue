@@ -3,7 +3,7 @@
     <a-row class="header-row-container">
       <a-col class="header-left xs-order-1 sm-order-1" :xs="12" :md="6">
         <router-link to="/">
-          <img src="/icons/logo.svg" alt="logo" />
+          <img src="/icons/logo.png" alt="logo" height="40" />
         </router-link>
       </a-col>
       <a-col
